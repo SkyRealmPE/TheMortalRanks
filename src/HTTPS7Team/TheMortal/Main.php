@@ -37,7 +37,7 @@ private $config;
     public function onEnable() {
         $this->getLogger()->info(TextFormat::BLACK . "Created by Cat -Discord- ");
         @mkdir($this->getDataFolder());
-        $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array("DamageA" => 5, "DamageB" => 10, "DamageC" => 15, "FoodA" => 20, "FoodB" => 40, "FoodC" => 60, "HealthA" => 40, "HealthB" => 60, "HealthC" => 80));
+        $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array("DamageA" => 5, "DamageB" => 10, "DamageC" => 15, "FoodA" => 20, "FoodB" => 40, "FoodC" => 60, "HealthA" => 40, "HealthB" => 60, "HealthC" => 80, "ParticleA" => "CriticalParticle", "ParticleB" => "CriticalParticle", "ParticleC" => "CriticalParticle"));
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         
     }
