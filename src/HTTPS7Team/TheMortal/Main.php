@@ -26,9 +26,82 @@ private $config;
     public function onEnable() {
         $this->getLogger()->info(TextFormat::GREEN . "Created by Cat -Discord- ");
         @mkdir($this->getDataFolder());
-        $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array(###This is the damage that is done for this group, "DamageA" => 5, "DamageB" => 10, "DamageC" => 15, ###This is the food, "foodA" => 20, "foodB" => 40, "foodC" => 60, "HealthA" => 40, "HealthB" => 60));
+        $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array("DamageA" => 5, "DamageB" => 10, "DamageC" => 15, "FoodA" => 20, "FoodB" => 40, "FoodC" => 60, "HealthA" => 40, "HealthB" => 60, "HealthC" => 80));
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         
     }
+            
+            public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
+        if ($sender->hasPermission("vip.update")) {
+            if (strtolower($command->getName()) == "vipupdate") {
+                $sender->sendMessage(TextFormat::GOLD . "updated!");
+                if ($sender instanceof Player) {
+                    $sender->setDamage($this->config->get("DamageA"));
+                    $sender->setHealth($this->config->get("HealthA"));
+                    $sender->setFood($this->config->get("FoodA"));
+                    return true;
+                } else {
+                    $sender->sendMessage(TextFormat::RED . "Incorrect usage or privlages!");
+                    return false;
+                }
+            }
+            
+            if ($sender->hasPermission("viplus.update")) {
+            if (strtolower($command->getName()) == "viplusupdate") {
+                $sender->sendMessage(TextFormat::GOLD . "updated!");
+                if ($sender instanceof Player) {
+                    $sender->setDamage($this->config->get("DamageB"));
+                    $sender->setHealth($this->config->get("HealthB"));
+                    $sender->setFood($this->config->get("FoodB"));
+                    return true;
+                } else {
+                    $sender->sendMessage(TextFormat::RED . "Incorrect usage or privlages!");
+                    return false;
+                    
+                }
+                
+            }
+                
+                if ($sender->hasPermission("mvp.update")) {
+            if (strtolower($command->getName()) == "mvpupdate") {
+                $sender->sendMessage(TextFormat::GOLD . "updated!");
+                if ($sender instanceof Player) {
+                    $sender->setDamage($this->config->get("DamageC"));
+                    $sender->setHealth($this->config->get("HealthC"));
+                    $sender->setFood($this->config->get("FoodC"));
+                    return true;
+                } else {
+                    $sender->sendMessage(TextFormat::RED . "Incorrect usage or privlages!");
+                    return false;
+                    
+                }
+                
+            }
+                    
+                    if ($sender->hasPermission("group.reset")) {
+            if (strtolower($command->getName()) == "reset") {
+                $sender->sendMessage(TextFormat::GOLD . "updated!");
+                if ($sender instanceof Player) {
+                    $sender->setDamage(0.3);
+                    $sender->setHealth(20);
+                    $sender->setFood(20);
+                    return true;
+                } else {
+                    $sender->sendMessage(TextFormat::RED . "Incorrect usage or privlages!");
+                    return false;
+                    
+                }
+                
+            }
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
+                
+            }
     
-    
+}
