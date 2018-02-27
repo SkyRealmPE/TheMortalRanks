@@ -19,6 +19,16 @@ use pocketmine\entity\Human;
 use pocketmine\entity\Living;
 use pocketmine\utils\Config;
 use pocketmine\block\Fire;
+use pocketmine\level\particle;
+use pocketmine\level\particle\HugeExplodeParticle;
+use pocketmine\level\particle\FlameParticle;
+use pocketmine\level\particle\RedstoneParticle;
+use pocketmine\level\particle\HeartParticle;
+use pocketmine\level\particle\WaterDripParticle;
+use pocketmine\level\particle\SmokeParticle;
+use pocketmine\level\particle\EnchantParticle;
+use pocketmine\level\particle\BubbleParticle;
+use pocketmine\level\particle\CriticalParticle;
 
 class Main extends PluginBase implements listener {
 
