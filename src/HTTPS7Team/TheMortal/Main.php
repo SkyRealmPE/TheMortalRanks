@@ -38,7 +38,7 @@ private $config;
                 $sender->sendMessage(TextFormat::GREEN . "updated!");
                 if ($sender instanceof Player) {
                     $sender->setDamage($this->config->get("DamageA"));
-                    $sender->setHealth($this->config->get("HealthA"));
+                    $sender->setMaxHealth($this->config->get("HealthA"));
                     $sender->setFood($this->config->get("FoodA"));
                     $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::FIRE));
                     return true;
@@ -53,7 +53,7 @@ private $config;
                 $sender->sendMessage(TextFormat::YELLOW . "updated!");
                 if ($sender instanceof Player) {
                     $sender->setDamage($this->config->get("DamageB"));
-                    $sender->setHealth($this->config->get("HealthB"));
+                    $sender->setMaxHealth($this->config->get("HealthB"));
                     $sender->setFood($this->config->get("FoodB"));
                     $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::FIRE));
                     return true;
@@ -70,7 +70,7 @@ private $config;
                 $sender->sendMessage(TextFormat::BLUE . "updated!");
                 if ($sender instanceof Player) {
                     $sender->setDamage($this->config->get("DamageC"));
-                    $sender->setHealth($this->config->get("HealthC"));
+                    $sender->setMaxHealth($this->config->get("HealthC"));
                     $sender->setFood($this->config->get("FoodC"));
                     $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::FIRE));
                     return true;
@@ -87,7 +87,7 @@ private $config;
                 $sender->sendMessage(TextFormat::PINK . "updated!");
                 if ($sender instanceof Player) {
                     $sender->setDamage(0.3);
-                    $sender->setHealth(20);
+                    $sender->setMaxHealth(20);
                     $sender->setFood(20);
                     $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::WATER));
                     return true;
