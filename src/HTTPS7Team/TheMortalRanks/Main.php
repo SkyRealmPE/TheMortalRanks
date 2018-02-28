@@ -1,6 +1,6 @@
 <?php
 
-namespace HTTPS7Team\HumanDefiner;
+namespace HTTPS7Team\TheMortalRanks;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
