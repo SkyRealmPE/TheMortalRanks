@@ -37,7 +37,7 @@ private $config;
     public function onEnable() {
         $this->getLogger()->info(TextFormat::BLACK . "Created by Cat -Discord- ");
         @mkdir($this->getDataFolder());
-        $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array("DamageA" => 5, "DamageB" => 10, "DamageC" => 15, "FoodA" => 20, "FoodB" => 40, "FoodC" => 60, "HealthA" => 40, "HealthB" => 60, "HealthC" => 80, "ParticleA" => "CriticalParticle", "ParticleB" => "CriticalParticle", "ParticleC" => "CriticalParticle"));
+        $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array("DamageA" => 5, "DamageB" => 10, "DamageC" => 15, "FoodA" => 20, "FoodB" => 40, "FoodC" => 60, "HealthA" => 40, "HealthB" => 60, "HealthC" => 80, "ItemA" => "FIREWORK", "ItemB" => "FIREWORK", "ItemC" => "FIREWORK"));
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         
     }
@@ -50,6 +50,7 @@ private $config;
                     $sender->setDamage($this->config->get("DamageA"));
                     $sender->setMaxHealth($this->config->get("HealthA"));
                     $sender->setFood($this->config->get("FoodA"));
+                    $sender->getItem($this->config->get("ItemA"));
                     $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::FIRE));
                     return true;
                 } else {
@@ -65,6 +66,7 @@ private $config;
                     $sender->setDamage($this->config->get("DamageB"));
                     $sender->setMaxHealth($this->config->get("HealthB"));
                     $sender->setFood($this->config->get("FoodB"));
+                    $sender->getItem($this->config->get("ItemB"));
                     $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::FIRE));
                     return true;
                 } else {
@@ -82,6 +84,7 @@ private $config;
                     $sender->setDamage($this->config->get("DamageC"));
                     $sender->setMaxHealth($this->config->get("HealthC"));
                     $sender->setFood($this->config->get("FoodC"));
+                    $sender->getItem($this->config->get("ItemC"));
                     $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::FIRE));
                     return true;
                 } else {
