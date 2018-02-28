@@ -50,7 +50,7 @@ private $config;
                     $sender->setDamage($this->config->get("DamageA"));
                     $sender->setMaxHealth($this->config->get("HealthA"));
                     $sender->setFood($this->config->get("FoodA"));
-                    $sender->getItem($this->config->get("ItemA"));
+                    $sender->setItemInHand($this->config->get("ItemA"));
                     $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::FIRE));
                     return true;
                 } else {
@@ -66,7 +66,7 @@ private $config;
                     $sender->setDamage($this->config->get("DamageB"));
                     $sender->setMaxHealth($this->config->get("HealthB"));
                     $sender->setFood($this->config->get("FoodB"));
-                    $sender->getItem($this->config->get("ItemB"));
+                    $sender->setItemInHand($this->config->get("ItemB"));
                     $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::FIRE));
                     return true;
                 } else {
@@ -84,7 +84,7 @@ private $config;
                     $sender->setDamage($this->config->get("DamageC"));
                     $sender->setMaxHealth($this->config->get("HealthC"));
                     $sender->setFood($this->config->get("FoodC"));
-                    $sender->getItem($this->config->get("ItemC"));
+                    $sender->setItemInHand($this->config->get("ItemC"));
                     $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::FIRE));
                     return true;
                 } else {
