@@ -12,22 +12,22 @@ api:
 load: POSTWORLD
 author: HTTPS7Team
 commands:
-  svipupdate:
+  member:
    description: This will update you to a special unregistered rank-up group!
-   usage: "/svipupdate"
-   permission: svip.update
-  sviplusupdate:
+   usage: "/member"
+   permission: member.command
+  donater:
    description: This will update you to a special unregistered rank-up group!
-   usage: "/sviplusupdate"
-   permission: sviplus.update
-  mvpupdate:
+   usage: "/donater"
+   permission: donater.command
+  youtuber:
    description: This will update you to a special unregistered rank-up group!
-   usage: "/mvpupdate"
-   permission: mvp.update
-  resetsgroups:
+   usage: "/youtuber"
+   permission: youtuber.command
+  staffop:
    description: This will take away your unregistered rank-up group!
-   usage: "/resetsgroups"
-   permission: groups.reset
+   usage: "/staffop"
+   permission: staff.command
   permissions:
    svipupdate:
      default: false
