@@ -19,38 +19,31 @@ use pocketmine\entity\Human;
 use pocketmine\entity\Living;
 use pocketmine\utils\Config;
 use pocketmine\block\Fire;
-use pocketmine\level\particle;
-use pocketmine\level\particle\HugeExplodeParticle;
-use pocketmine\level\particle\FlameParticle;
-use pocketmine\level\particle\RedstoneParticle;
-use pocketmine\level\particle\HeartParticle;
-use pocketmine\level\particle\WaterDripParticle;
-use pocketmine\level\particle\SmokeParticle;
-use pocketmine\level\particle\EnchantParticle;
-use pocketmine\level\particle\BubbleParticle;
-use pocketmine\level\particle\CriticalParticle;
+use pocketmine\inventory\Inventory;
+use pocketmine\item\ItemFactory;
+use pocketmine\event\entity\EntityInventoryChangeEvent;
+use pocketmine\item\Item;
+use pocketmine\inventory\BaseInventory;
+
 
 class Main extends PluginBase implements listener {
 
-private $config;
+    private $config;
 
     public function onEnable() {
-        $this->getLogger()->info(TextFormat::BLACK . "Created by Cat -Discord- ");
-        @mkdir($this->getDataFolder());
-        $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array("DamageA" => 5, "DamageB" => 10, "DamageC" => 15, "FoodA" => 20, "FoodB" => 40, "FoodC" => 60, "HealthA" => 40, "HealthB" => 60, "HealthC" => 80, "ItemA" => "FIREWORK", "ItemB" => "FIREWORK", "ItemC" => "FIREWORK"));
+        $this->getLogger()->info(TextFormat::YELLOW . "Created by Cat -Discord- ");
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        
     }
-            
-            public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
-        if ($sender->hasPermission("vip.update")) {
-            if (strtolower($command->getName()) == "vipupdate") {
+
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
+        if ($sender->hasPermission("svip.update")) {
+            if (strtolower($command->getName()) == "svipupdate") {
                 $sender->sendMessage(TextFormat::GREEN . "updated!");
                 if ($sender instanceof Player) {
-                    $sender->setDamage($this->config->get("DamageA"));
-                    $sender->setMaxHealth($this->config->get("HealthA"));
-                    $sender->setFood($this->config->get("FoodA"));
-                    $sender->setItemInHand($this->config->get("ItemA"));
+                    $sender->setMaxHealth(40);
+                    $sender->setHealth(40);
+                    $sender->addFood(20);
+                    $sender->setMaxAirSupplyTicks(20);
                     $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::FIRE));
                     return true;
                 } else {
@@ -58,68 +51,57 @@ private $config;
                     return false;
                 }
             }
-            
-            if ($sender->hasPermission("viplus.update")) {
-            if (strtolower($command->getName()) == "viplusupdate") {
-                $sender->sendMessage(TextFormat::YELLOW . "updated!");
-                if ($sender instanceof Player) {
-                    $sender->setDamage($this->config->get("DamageB"));
-                    $sender->setMaxHealth($this->config->get("HealthB"));
-                    $sender->setFood($this->config->get("FoodB"));
-                    $sender->setItemInHand($this->config->get("ItemB"));
-                    $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::FIRE));
-                    return true;
-                } else {
-                    $sender->sendMessage(TextFormat::RED . "Incorrect usage or privlages!");
-                    return false;
-                    
-                }
-                
-            }
-                
-                if ($sender->hasPermission("mvp.update")) {
-            if (strtolower($command->getName()) == "mvpupdate") {
-                $sender->sendMessage(TextFormat::BLUE . "updated!");
-                if ($sender instanceof Player) {
-                    $sender->setDamage($this->config->get("DamageC"));
-                    $sender->setMaxHealth($this->config->get("HealthC"));
-                    $sender->setFood($this->config->get("FoodC"));
-                    $sender->setItemInHand($this->config->get("ItemC"));
-                    $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::FIRE));
-                    return true;
-                } else {
-                    $sender->sendMessage(TextFormat::RED . "Incorrect usage or privlages!");
-                    return false;
-                    
-                }
-                
-            }
-                    
-                    if ($sender->hasPermission("group.reset")) {
-            if (strtolower($command->getName()) == "reset") {
-                $sender->sendMessage(TextFormat::PINK . "updated!");
-                if ($sender instanceof Player) {
-                    $sender->setDamage(0.3);
-                    $sender->setMaxHealth(20);
-                    $sender->setFood(20);
-                    $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::WATER));
-                    return true;
-                } else {
-                    $sender->sendMessage(TextFormat::RED . "Incorrect usage or privlages!");
-                    return false;
-                    
-                }
-                
-            }
-                        
+
+            if ($sender->hasPermission("sviplus.update")) {
+                if (strtolower($command->getName()) == "sviplusupdate") {
+                    $sender->sendMessage(TextFormat::YELLOW . "updated!");
+                    if ($sender instanceof Player) {
+                        $sender->setMaxHealth(60);
+                        $sender->addFood(20);
+                        $sender->setHealth(60);
+                        $sender->setMaxAirSupplyTicks(30);
+                        $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::FIRE));
+                        return true;
+                    } else {
+                        $sender->sendMessage(TextFormat::RED . "Incorrect usage or privlages!");
+                        return false;
                     }
-                    
                 }
-                
+
+                if ($sender->hasPermission("mvp.update")) {
+                    if (strtolower($command->getName()) == "mvpupdate") {
+                        $sender->sendMessage(TextFormat::BLUE . "updated!");
+                        if ($sender instanceof Player) {
+                            $sender->setMaxHealth(80);
+                            $sender->addFood(20);
+                            $sender->setHealth(80);
+                            $sender->setMaxAirSupplyTicks(35);
+                            $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::FIRE));
+                            return true;
+                        } else {
+                            $sender->sendMessage(TextFormat::RED . "Incorrect usage or privlages!");
+                            return false;
+                        }
+                    }
+
+                    if ($sender->hasPermission("group.reset")) {
+                        if (strtolower($command->getName()) == "resetsgroups") {
+                            $sender->sendMessage(TextFormat::RED . "updated!");
+                            if ($sender instanceof Player) {
+                                $sender->setMaxHealth(20);
+                                $sender->addFood(20);
+                                $sender->setMaxAirSupplyTicks(50);
+                                $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::WATER));
+                                return true;
+                            } else {
+                                $sender->sendMessage(TextFormat::RED . "Incorrect usage or privlages!");
+                                return false;
+                            }
+                        }
+                    }
+                }
             }
-            
         }
-                
-            }
-    
+    }
+
 }
