@@ -17,7 +17,7 @@ commands:
    usage: "/vipupdates"
    permission: vip.update
 permissions:
-  healup:
+  vipupdates:
     default: false
     children:
       vip.update:
