@@ -12,14 +12,41 @@ api:
 load: POSTWORLD
 author: HTTPS7Team
 commands:
-  vipupdates:
+  svipupdate:
    description: This will update you to a special unregistered rank-up group!
-   usage: "/vipupdates"
-   permission: vip.update
-permissions:
-  vipupdates:
-    default: false
-    children:
-      vip.update:
+   usage: "/svipupdate"
+   permission: svip.update
+  sviplusupdate:
+   description: This will update you to a special unregistered rank-up group!
+   usage: "/sviplusupdate"
+   permission: sviplus.update
+  mvpupdate:
+   description: This will update you to a special unregistered rank-up group!
+   usage: "/mvpupdate"
+   permission: mvp.update
+  resetsgroups:
+   description: This will take away your unregistered rank-up group!
+   usage: "/resetsgroups"
+   permission: groups.reset
+  permissions:
+   svipupdate:
+     default: false
+   sviplusupdate:
+     default: false
+   mvpupdate:
+     default: false
+   resetsgroups:
+     default: false
+  children:
+     svip.update:
         default: op
         description: "Gives you perms to run the command"
+     sviplus.update:
+       default: op
+       description: "Gives you perms to run the command"
+     mvp.update:
+       default: op
+       description: "Gives you perms to run the command"
+     groups.reset:
+       default: op
+       description: "Gives you perms to run the command"
