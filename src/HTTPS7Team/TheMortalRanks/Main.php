@@ -31,50 +31,50 @@ class Main extends PluginBase implements listener {
     private $config;
 
     public function onEnable() {
-        $this->getLogger()->info(TextFormat::YELLOW . "Created by Cat -Discord- ");
+        $this->getLogger()->info(TextFormat::YELLOW . "SkyRealm's Ranks Plugin enabled");
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
 
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
-        if ($sender->hasPermission("svip.update")) {
-            if (strtolower($command->getName()) == "svipupdate") {
-                $sender->sendMessage(TextFormat::GREEN . "updated!");
+        if ($sender->hasPermission("member.command")) {
+            if (strtolower($command->getName()) == "member") {
+                $sender->sendMessage("§l§bSky§6Bonus §8>§r§a You have been given special rewards for being a §dmember§a rank!);
                 if ($sender instanceof Player) {
-                    $sender->setMaxHealth(40);
+                    $sender->setMaxHealth(50);
                     $sender->setHealth(40);
                     $sender->addFood(20);
                     $sender->setMaxAirSupplyTicks(20);
                     $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::FIRE));
                     return true;
                 } else {
-                    $sender->sendMessage(TextFormat::RED . "Incorrect usage or privlages!");
+                    $sender->sendMessage(TextFormat::RED . "You dont have permission for this command! Vote at §abit.do/skyrealmpe §4to use this command!");
                     return false;
                 }
             }
 
-            if ($sender->hasPermission("sviplus.update")) {
-                if (strtolower($command->getName()) == "sviplusupdate") {
-                    $sender->sendMessage(TextFormat::YELLOW . "updated!");
+            if ($sender->hasPermission("donater.command")) {
+                if (strtolower($command->getName()) == "donater") {
+                    $sender->sendMessage("§l§bSky§6Bonus§8 >§r§a You have been given special rewards for having a §ddonater §arank!");
                     if ($sender instanceof Player) {
-                        $sender->setMaxHealth(60);
+                        $sender->setMaxHealth(70);
                         $sender->addFood(20);
-                        $sender->setHealth(60);
+                        $sender->setHealth(70);
                         $sender->setMaxAirSupplyTicks(30);
                         $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::FIRE));
                         return true;
                     } else {
-                        $sender->sendMessage(TextFormat::RED . "Incorrect usage or privlages!");
+                        $sender->sendMessage(TextFormat::RED . "You dont have permission for this command! Vote at §abit.do/skyrealmpe §4to use this command!");
                         return false;
                     }
                 }
 
-                if ($sender->hasPermission("mvp.update")) {
-                    if (strtolower($command->getName()) == "mvpupdate") {
-                        $sender->sendMessage(TextFormat::BLUE . "updated!");
+                if ($sender->hasPermission("youtuber.command")) {
+                    if (strtolower($command->getName()) == "youtuber") {
+                        $sender->sendMessage("§l§bSky§6Bonus§8 >§r§a You have been given special rewards for having a §dyoutube §arank!");
                         if ($sender instanceof Player) {
-                            $sender->setMaxHealth(80);
+                            $sender->setMaxHealth(60);
                             $sender->addFood(20);
-                            $sender->setHealth(80);
+                            $sender->setHealth(60);
                             $sender->setMaxAirSupplyTicks(35);
                             $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::FIRE));
                             return true;
@@ -84,12 +84,13 @@ class Main extends PluginBase implements listener {
                         }
                     }
 
-                    if ($sender->hasPermission("group.reset")) {
-                        if (strtolower($command->getName()) == "resetsgroups") {
-                            $sender->sendMessage(TextFormat::RED . "updated!");
+                    if ($sender->hasPermission("staffop.command")) {
+                        if (strtolower($command->getName()) == "staff") {
+                            $sender->sendMessage("§l§bSky§6Bonus§8 >§r§a You have been given special rewards for having a §ddonater §arank!");
                             if ($sender instanceof Player) {
-                                $sender->setMaxHealth(20);
+                                $sender->setMaxHealth(70);
                                 $sender->addFood(20);
+                                $sender->setHealth(70);
                                 $sender->setMaxAirSupplyTicks(50);
                                 $sender->getLevel()->setBlock($sender->floor(), Block::get(Block::WATER));
                                 return true;
