@@ -13,29 +13,29 @@ load: POSTWORLD
 author: HTTPS7Team
 commands:
   member:
-   description: This will update you to a special unregistered rank-up group!
+   description: "§bThis command is only for Member and up!"
    usage: "/member"
    permission: member.command
   donater:
-   description: This will update you to a special unregistered rank-up group!
+   description: "§bThis command is only for Donaters!"
    usage: "/donater"
    permission: donater.command
   youtuber:
-   description: This will update you to a special unregistered rank-up group!
+   description: "§bThis command is only for Youtubers and up!"
    usage: "/youtuber"
    permission: youtuber.command
   staffop:
-   description: This will take away your unregistered rank-up group!
-   usage: "/staffop"
-   permission: staff.command
+   description: "§bThis command is only for Staff!"
+   usage: "/staff"
+   permission: staffop.command
   permissions:
-   svipupdate:
+   member.command:
      default: false
-   sviplusupdate:
+   donater.command:
      default: false
-   mvpupdate:
+   youtuber.command:
      default: false
-   resetsgroups:
+   staffop.command:
      default: false
   children:
      svip.update:
